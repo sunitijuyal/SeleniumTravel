@@ -35,6 +35,7 @@ public class AppTest extends Base {
         Base.waitForPageLoad(driver);
         Assert.assertTrue(driver.getTitle().contains("Login - PHPTRAVELS"));
         log.info("Home page loaded successfully");
+        System.out.println("Home page loaded successfully");
 
         driver.findElement(By.name("email")).sendKeys("user@phptravels.com");
         driver.findElement(By.name("password")).sendKeys("demouser");
@@ -44,17 +45,22 @@ public class AppTest extends Base {
         System.out.println("Dashboard page loaded successfully");
 
 
-        driver.findElement(By.xpath("//a[contains(text(),flights)]")).click();
+        driver.findElement(By.xpath("//a[contains(text(),'flights')]")).click();
         Base.waitForPageLoad(driver);
         driver.findElement(By.name("from")).sendKeys(Keys.chord("indira",Keys.ARROW_DOWN,Keys.TAB));
+        Base.waitForPageLoad(driver);
         driver.findElement(By.name("to")).sendKeys(Keys.chord("changi",Keys.ARROW_DOWN,Keys.TAB));
-
+        Base.waitForPageLoad(driver);
         driver.findElement(By.className("next")).click();
         Base.waitForPageLoad(driver);
         driver.findElement(By.id("departure")).sendKeys(Keys.chord(Keys.CONTROL,"a"),Keys.DELETE,"20-03-2022",Keys.TAB);
+        Base.waitForPageLoad(driver);
         driver.findElement(By.xpath("//a[@class = 'dropdown-toggle dropdown-btn waves-effect']")).click();
+        Base.waitForPageLoad(driver);
         driver.findElement(By.xpath("//i[@class = 'la la-plus']")).click();
+        Base.waitForPageLoad(driver);
         driver.findElement(By.xpath("//i[@class ='mdi mdi-search']")).click();
+        Base.waitForPageLoad(driver);
 
         String scenarioName = Thread.currentThread().getStackTrace()[1].getMethodName();
         Base.takeScreenshot(driver,scenarioName);
